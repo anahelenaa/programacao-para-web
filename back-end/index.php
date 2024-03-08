@@ -3,6 +3,11 @@ require_once "classes/Produto.class.php";
 require_once "classes/Contato.class.php";
 
 
+$pdo = new PDO('sqlite:banco/banco.sqlite');
+
+echo 'Conectei';
+
+
 do{
     echo "-----MENU-----" . PHP_EOL;
     echo "1 => Cadastrar produto" . PHP_EOL;
