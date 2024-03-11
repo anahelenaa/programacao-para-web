@@ -15,7 +15,7 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: left;
-    background-color: rgb(196, 196, 196);
+    background-color: #a6a5a2;
     width: 100vw;
     height: 70px;
 }
@@ -30,6 +30,14 @@ header h1 {
 }
 #corpo {
     margin-left: 1vw;
+}
+
+.h2 {
+    font-size: 28px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 25px;
+
 }
 
 #btn {
@@ -57,7 +65,7 @@ header h1 {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: rgb(196, 196, 196);
+    background-color: #a6a5a2;
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 1vw;
@@ -67,7 +75,7 @@ header h1 {
     padding: 0.5vw 0.5vw 0.5vw 1.5vw;
     text-decoration: none;
     font-size: 1.5vw;
-    color: #818181;
+    color: #3a3838;
     display: block;
     transition: 0.3s;
   }
@@ -89,10 +97,118 @@ header h1 {
     .sidenav a {font-size: 18px;}
     
   }
+
+  .container-produtos {
+    display: flex;
+    flex-direction: row;
+    overflow-wrap: break-word;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-left: 2%;
+    margin-right: 2%;
+    gap: 1vw;
+  }
+
+  .produto {
+    background-color: #a6a5a2;
+    height: 360px;
+    width: 310px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    
+  }
+
+ .produto:hover {
+    background-color: #c7c5c1;
+    transition: 0.3s;
+  }
+
+  .container-imagem{
+    width: 100%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .produto img {
+    max-width: 250px;
+    height: auto;
+    max-height: 180px;
+    padding-top: 20px;
+    
+  }
+
+
+  .produto h2 {
+    font-size: 20px;
+    color: black;
+    padding-top: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
+    font-weight: 500;
+  }
+
+  .produto p {
+    color: rgb(46, 44, 44);
+    font-size: 14px;
+    padding-left: 25px;
+    padding-right: 25px;
+    max-width: 290px;
+  }
+
+  #preco {
+    font-size: 22px;
+    color: black;
+    padding-top: 3px;
+    padding-left: 25px;
+    padding-bottom: 25px;
+    font-weight: 500;
+  }
+
 /*
 quando a tela for até 
 
 */
+  @media screen and (max-width: 1015px){
+    .produto {
+      height: 450px;
+      width: 400px;
+      border-radius: 20px;
+      
+    }
+
+    .produto img {
+      max-width: 325px;
+      height: auto;
+      max-height: 255px;
+      padding-top: 20px;
+      
+    }
+    .produto h2 {
+      font-size: 24px;
+      padding-top: 15px;
+      padding-left: 35px;
+      padding-right: 35px;
+    }
+
+    .produto p {
+      color: rgb(46, 44, 44);
+      font-size: 18px;
+      padding-left: 35px;
+      padding-right: 25px;
+      max-width: 290px;
+    }
+
+  #preco {
+    font-size: 26px;
+    padding-top: 3px;
+    padding-left: 35px;
+    padding-bottom: 35px;
+    font-weight: 500;
+  }
+  }
+
   @media screen and (max-width: 400px){
   header {
     height: 50px;

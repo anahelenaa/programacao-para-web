@@ -1,19 +1,18 @@
 <?php
 require_once "classes/Produto.class.php";
 require_once "classes/Contato.class.php";
+require_once "ConexaoBD.php";
 
-
-$pdo = new PDO('sqlite:banco/banco.sqlite');
-
-echo 'Conectei';
 
 
 do{
+    /*
     echo "-----MENU-----" . PHP_EOL;
     echo "1 => Cadastrar produto" . PHP_EOL;
     echo "2 => Cadastrar Contato" . PHP_EOL;
     echo "0 => Sair" . PHP_EOL;
-
+    */
+    
     $opcaoMenu = readline("Insira a opção desejada: ");
 
     switch ($opcaoMenu){
@@ -21,9 +20,10 @@ do{
             do{ $nomeProduto = readline("Insira o nome do produto: " . PHP_EOL);
                 $valorProduto = readline("Insira o valor do produto: " . PHP_EOL);
                 $descricaoProduto = readline("Insira a descricao do produto: " . PHP_EOL);
+                $imagemProduto = readline("Insira o caminho para a imagem do produto: " . PHP_EOL);
     
                 $produto = new Produto();
-                $produto->cadastraProduto($nomeProduto, $valorProduto, $descricaoProduto);
+                $produto->cadastraProduto($nomeProduto, $valorProduto, $descricaoProduto, $imagemProduto);
     
                 $arrayProdutos[] = $produto;
                 unset($produto);
@@ -71,7 +71,7 @@ do{
             break;
 
         case '0':
-            echo "Tchau! :)";
+            //echo "Tchau! :)";
             break;
 
         default:
