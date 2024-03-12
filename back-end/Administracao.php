@@ -65,6 +65,8 @@ $arrayProdutos = $produtoRepositorio->retornaProdutos();
         </table>
     </div>
 
+    <a href="./CadastrarProduto.php"><button>Cadastrar Produto</button></a>
+
     <script>
         function openNav() {
           document.getElementById("meuMenu").style.width = "17vw";

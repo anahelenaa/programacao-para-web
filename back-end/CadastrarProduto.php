@@ -35,7 +35,7 @@ $arrayProdutos = $produtoRepositorio->retornaProdutos();
     </header>
 
     <form action="submit" method="post">
-        
+        <input type="text" name="nome" value="">
     </form>
     
 

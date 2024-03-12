@@ -23,20 +23,14 @@ class ProdutoRepositorio {
 
     public function cadastraProdutosBanco(Produto $produto){
 
-
-        $statement = $this->pdo->prepare("INSERT INTO `projeto` . `produtos` ( `nome`, `valor`,`descricao`,`quantidade`, `imagem` ) VALUES (':nome', ':valor', ':descricao',':quantidade', ':imagem');");
-
-        $nome = $produto->retornaNome();
-        $valor = $produto->retornaValor();
-        $descricao = $produto->retornaDescricao();
-        $quantidade = $produto->retornaQuantidade();
-        $imagem = $produto->retornaImagem();
-
-        $statement->bindParam(':nome', $nome, PDO::PARAM_STR);
-        $statement->bindParam(':valor', $valor, PDO::PARAM_INT);
-        $statement->bindParam(':descricao', $descricao, PDO::PARAM_STR);
-        $statement->bindParam(':quantidade', $quantidade, PDO::PARAM_INT);
-        $statement->bindParam(':imagem', $imagem, PDO::PARAM_STR);
+        $sql = "INSERT INTO produtos ( nome, valor, descricao, quantidade, imagem) VALUES (?,?,?,?,?)";
+        $statement = $this->pdo->prepare($sql);
+        $statement->bindValue(1, $produto->retornaNome());
+        $statement->bindValue(2, $produto->retornaValor()());
+        $statement->bindValue(3, $produto->retornaDescricao()());
+        $statement->bindValue(4, $produto->retornaQuantidade());
+        $statement->bindValue(5, $produto->retornaImagem());
+        $statement->execute();
 
         if ($statement->execute()) {
             echo "deu certo";
