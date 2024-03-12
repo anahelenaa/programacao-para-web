@@ -1,5 +1,7 @@
 <?php 
 
+namespace App\Classes;
+
 class Contato {
     private string $nome;
     private string $sobrenome;

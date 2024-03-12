@@ -209,6 +209,45 @@ quando a tela for até
   }
   }
 
+  @media screen and (max-width: 870px){
+    .produto {
+      height: 300px;
+      width: 250px;
+      border-radius: 15px;
+      
+    }
+
+    .produto img {
+      max-width: 325px;
+      height: auto;
+      max-height: 255px;
+      padding-top: 20px;
+      
+    }
+    .produto h2 {
+      font-size: 24px;
+      padding-top: 15px;
+      padding-left: 35px;
+      padding-right: 35px;
+    }
+
+    .produto p {
+      color: rgb(46, 44, 44);
+      font-size: 18px;
+      padding-left: 35px;
+      padding-right: 25px;
+      max-width: 290px;
+    }
+
+  #preco {
+    font-size: 26px;
+    padding-top: 3px;
+    padding-left: 35px;
+    padding-bottom: 35px;
+    font-weight: 500;
+  }
+  }
+
   @media screen and (max-width: 400px){
   header {
     height: 50px;

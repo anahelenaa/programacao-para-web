@@ -1,6 +1,12 @@
 <?php
-require_once "classes/Produto.class.php";
-require_once "classes/Contato.class.php";
+error_reporting(E_ALL);
+
+require_once "../vendor/autoload.php";
+
+use App\Classes\Contato;
+use App\Classes\Produto;
+use App\Classes\ProdutoRepositorio;
+
 require_once "ConexaoBD.php";
 
 
@@ -21,12 +27,16 @@ do{
                 $valorProduto = readline("Insira o valor do produto: " . PHP_EOL);
                 $descricaoProduto = readline("Insira a descricao do produto: " . PHP_EOL);
                 $imagemProduto = readline("Insira o caminho para a imagem do produto: " . PHP_EOL);
+                $quantidadeProduto = readline("Insira a quantidade: " . PHP_EOL);
     
                 $produto = new Produto();
-                $produto->cadastraProduto($nomeProduto, $valorProduto, $descricaoProduto, $imagemProduto);
+                $produto->cadastraProduto($nomeProduto, $valorProduto, $descricaoProduto, $imagemProduto, $quantidadeProduto);
+                $produtoRepositorio = new ProdutoRepositorio($pdo);
+                $produtoRepositorio->cadastraProdutosBanco($produto);
+
     
                 $arrayProdutos[] = $produto;
-                unset($produto);
+                //unset($produto);
 
                 $opcaoCadastrarProduto = readline("Digite 0 para cadastrar mais um produto e 1 para voltar: " . PHP_EOL);
 
@@ -34,6 +44,8 @@ do{
                     echo "Opção invalida!!" . PHP_EOL;
                     $opcaoCadastrarProduto = readline("Digite 0 para cadastrar mais um produto e 1 para voltar: " . PHP_EOL);
                 }
+
+                unset($produtoRepositorio);
 
             } while($opcaoCadastrarProduto != 1);
 

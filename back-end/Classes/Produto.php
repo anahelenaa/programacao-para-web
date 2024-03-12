@@ -1,5 +1,7 @@
 <?php 
 
+namespace App\Classes;
+
 class Produto {
 
     private string $nome;
@@ -9,11 +11,12 @@ class Produto {
     private string $imagem;
     private int $id;
 
-    public function cadastraProduto( string $nomeProduto, float $valorProduto, string $descricaoProduto, string $imagemProduto){
+    public function cadastraProduto( string $nomeProduto, float $valorProduto, string $descricaoProduto, string $imagemProduto, int $quantidadeProduto){
         $this->nome = $nomeProduto;
         $this->valor = $valorProduto;
         $this->descricao = $descricaoProduto;
         $this->imagem = $imagemProduto;
+        $this->quantidade = $quantidadeProduto;
 
     }
 
@@ -31,5 +34,17 @@ class Produto {
 
     public function retornaImagem(){
         return $this->imagem;
+    }
+
+    public function retornaId(){
+        return $this->id;
+    }
+
+    public function retornaQuantidade(){
+        return $this->quantidade;
+    }
+
+    public function editaNome(string $nome, array $arrayProdutos, Produto $produto){
+        $arrayProdutos[($produto->retornaId()) - 1]->nome = $nome;
     }
 }

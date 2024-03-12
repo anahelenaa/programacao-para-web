@@ -1,25 +1,29 @@
 <?php 
-//require_once "../back-end/MenuCliente.php";
-require_once "../back-end/ConexaoBD.php";
-require_once "../back-end/classes/Produto.class.php";
 
-$sql1 = "SELECT * FROM produtos";
-$statement = $pdo -> query($sql1);
-$arrayProdutos = $statement -> fetchAll(PDO::FETCH_CLASS, Produto::class);
+require_once "../vendor/autoload.php";
+require_once "ConexaoBD.php";
+
+use App\Classes\Produto;
+use App\Classes\Contato;
+use App\Classes\ProdutoRepositorio;
+
+$produtoRepositorio = new ProdutoRepositorio($pdo);
+$arrayProdutos = $produtoRepositorio->retornaProdutos();
+
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
+    <title>Cadastro de produtos</title>
+    <link rel="stylesheet" href="../front-end/Administracao.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>DuArte Presentes e Brinquedos</title>
 </head>
 <body>
     <header>
-        
         <div id="meuMenu" class="menu">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a class="active" href="#brinquedos">Brinquedos</a>
@@ -29,22 +33,11 @@ $arrayProdutos = $statement -> fetchAll(PDO::FETCH_CLASS, Produto::class);
         
         <h1 id="titulo" >Du<b style="color:red">A</b><b style="color: blue">r</b><b style="color: yellow">t</b><b style="color: green">e</b></h1>
     </header>
-    <div id="corpo">
-        <h2 class="h2">Produtos</h2>
-        <div class="container-produtos">
-        <?php foreach ($arrayProdutos as $produto){ ?> 
-            <div class="produto"> 
-                    <h2> <?= "{$produto->retornaNome()}"?> </h2>
-                    <div class="container-imagem">
-                        <img src="<?= "imagens/" . "{$produto->retornaImagem()}"?>" alt="<?= "{$produto->retornaNome()}"?>">
-                    </div>
-                    <p> <?= "{$produto->retornaDescricao()}"?> </p>
-                    <p id="preco"> <?= "R$"."{$produto->retornaValor()}"?> </p>
-            </div>
-            <?php }; ?> 
-        </div>
-    </div>
 
+    <form action="submit" method="post">
+        
+    </form>
+    
 
     <script>
         function openNav() {

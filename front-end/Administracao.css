@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Viga&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: "Noto Sans", sans-serif ;
+    font-size: 1.5vw;
+    background-color: rgb(229, 229, 229);
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    background-color: #a6a5a2;
+    width: 100vw;
+    height: 70px;
+}
+
+header h1 {
+    font-size: 42px;
+    font-family: "Viga", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    margin-top: 0.4vw;
+    
+}
+#corpo {
+    margin-left: 1vw;
+}
+
+.h2 {
+    font-size: 28px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 25px;
+
+}
+
+#btn {
+    border-style: unset;
+    width: 3vw;
+    height: 1vw;
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    font-size: 36px;
+    margin-top: 16px;
+    margin-right: 9px;
+    margin-left: 20px;
+}
+
+:focus #btn {
+    transition: 0.4s;
+    font-size: 2.9vw;
+}
+
+.menu {
+    height: 100%;
+    text-align: left;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #a6a5a2;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 1vw;
+  }
+  
+  .menu a {
+    padding: 0.5vw 0.5vw 0.5vw 1.5vw;
+    text-decoration: none;
+    font-size: 1.5vw;
+    color: #3a3838;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .menu a:hover {
+    color: #f1f1f1;
+  }
+
+  .closebtn {
+    position: absolute;
+    top: 0;
+    right: 1.3vw;
+    font-size: 2vw;
+    margin-left: 2vw;
+  }
+
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+    
+  }
