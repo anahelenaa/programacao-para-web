@@ -25,6 +25,10 @@ class Produto {
     }
 
     public function retornaValor(){
+        return $this->valor;
+    }
+
+    public function retornaValorFormatado(){
         return number_format($this->valor, 2, ',', '.');
     }
 
@@ -47,4 +51,5 @@ class Produto {
     public function editaNome(string $nome, array $arrayProdutos, Produto $produto){
         $arrayProdutos[($produto->retornaId()) - 1]->nome = $nome;
     }
+
 }

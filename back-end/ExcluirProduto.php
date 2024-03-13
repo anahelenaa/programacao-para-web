@@ -1,8 +1,10 @@
 <?php
 
- require_once "ConexaoBD.php";
- use App\Classes\Produto;
- use App\Classes\ProdutoRepositorio;
+require_once "../vendor/autoload.php";
+require_once "ConexaoBD.php";
+use App\Classes\ProdutoRepositorio;
+
+
  
 
 $produtoRepositorio = new ProdutoRepositorio($pdo);

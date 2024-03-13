@@ -4,6 +4,7 @@ namespace App\Classes;
 
 error_reporting(E_ALL);
 
+use App\Classes\Produto;
 use PDO;
 
 class ProdutoRepositorio {
@@ -21,23 +22,21 @@ class ProdutoRepositorio {
         return $statement -> fetchAll(PDO::FETCH_CLASS, Produto::class);
     }
 
-    public function cadastraProdutosBanco(Produto $produto){
+    public function cadastraProdutosBanco(Produto $produto):bool{
 
         $sql = "INSERT INTO produtos ( nome, valor, descricao, quantidade, imagem) VALUES (?,?,?,?,?)";
         $statement = $this->pdo->prepare($sql);
         $statement->bindValue(1, $produto->retornaNome());
-        $statement->bindValue(2, $produto->retornaValor()());
-        $statement->bindValue(3, $produto->retornaDescricao()());
+        $statement->bindValue(2, $produto->retornaValor());
+        $statement->bindValue(3, $produto->retornaDescricao());
         $statement->bindValue(4, $produto->retornaQuantidade());
         $statement->bindValue(5, $produto->retornaImagem());
-        $statement->execute();
-
-        if ($statement->execute()) {
-            echo "deu certo";
-          } else {
-            echo "deu errado :(";
-          }
+        return $statement->execute();
         
+    }
+
+    public function retornaResultado($status):string{
+        return ($status == true) ? $resultado = "Produto cadastrado com sucesso.":$resultado = "Produto não cadastrado.";;
     }
 
     public function deletaProduto(int $id){
@@ -45,5 +44,32 @@ class ProdutoRepositorio {
         $statement = $this->pdo->prepare($sql);
         $statement->bindValue(1, $id);
         $statement->execute();
+    }
+
+    public function formaProduto($dados):Produto{
+
+        $produto = new Produto;
+        $produto->cadastraProduto(
+            $dados['nome'],
+            $dados['valor'],
+            $dados['descricao'],
+            $dados['imagem'],
+            $dados['quantidade']
+        );
+
+        return $produto;
+        
+    }
+
+    public function retornaProduto(int $id){
+        $sql = "SELECT * FROM produtos WHERE id = ?";
+        $statement = $this->pdo->prepare($sql);
+        $statement->bindValue(1, $id);
+        $statement->execute();
+
+        $dados = $statement->fetch(PDO::FETCH_ASSOC);
+
+        return $this->formaProduto($dados);
+
     }
 }

@@ -25,12 +25,11 @@ header h1 {
     font-family: "Viga", sans-serif;
     font-weight: 400;
     font-style: normal;
-    margin-top: 0.4vw;
+    margin-top: 6px;
+    margin-left: 14px;
     
 }
-#corpo {
-    margin-left: 1vw;
-}
+
 
 .h2 {
     font-size: 28px;
@@ -48,7 +47,6 @@ header h1 {
     color: white;
     font-size: 36px;
     margin-top: 16px;
-    margin-right: 9px;
     margin-left: 20px;
 }
 
@@ -70,33 +68,39 @@ header h1 {
     transition: 0.5s;
     padding-top: 1vw;
   }
+
+  .container-opcoes {
+    margin-top: 42px;
+    gap: 5px;
+  }
   
-  .menu a {
-    padding: 0.5vw 0.5vw 0.5vw 1.5vw;
+  .opcao-menu {
+    margin-top: 12px;
+    margin-bottom: 12px;
     text-decoration: none;
-    font-size: 1.5vw;
+    text-align: center;
+    font-size: 25px;
     color: #3a3838;
     display: block;
     transition: 0.3s;
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 500;
   }
   
   .menu a:hover {
     color: #f1f1f1;
   }
 
-  .closebtn {
+  .botao-fechar {
     position: absolute;
     top: 0;
-    right: 1.3vw;
-    font-size: 2vw;
-    margin-left: 2vw;
+    right: 10px;
+    font-size: 40px;
+    margin-left: 15px;
+    text-decoration: none;
+    color: #3a3838;
   }
 
-  @media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
-    
-  }
 
   .container-produtos {
     display: flex;
@@ -140,7 +144,7 @@ header h1 {
   }
 
 
-  .produto h2 {
+  .nome-produto {
     font-size: 20px;
     color: black;
     padding-top: 15px;
@@ -175,7 +179,7 @@ quando a tela for até
       height: 450px;
       width: 400px;
       border-radius: 20px;
-      
+      margin-bottom: 20px;
     }
 
     .produto img {
@@ -185,7 +189,7 @@ quando a tela for até
       padding-top: 20px;
       
     }
-    .produto h2 {
+    .nome-produto {
       font-size: 24px;
       padding-top: 15px;
       padding-left: 35px;
@@ -200,52 +204,130 @@ quando a tela for até
       max-width: 290px;
     }
 
-  #preco {
+    #preco {
     font-size: 26px;
     padding-top: 3px;
     padding-left: 35px;
     padding-bottom: 35px;
     font-weight: 500;
-  }
+    }
+
+    header h1 {
+    margin-left: 14px;
+    margin-top: 6px;
+
+    }
+
+
   }
 
-  @media screen and (max-width: 870px){
+  @media screen and (max-width: 865px){
+    
+    .container-opcoes {
+      margin-top: 55px;
+      gap: 5px;
+    }
+    
+    .opcao-menu {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      text-decoration: none;
+      text-align: center;
+      font-size: 20px;
+      height: 30px;
+      color: #3a3838;
+      display: block;
+      transition: 0.3s;
+      font-family: "Noto Sans", sans-serif;
+      font-weight: 500;
+    }
+
+
+    .h2{
+      font-size: 20px;
+      padding: 10px 5px 10px 10px;
+    }
+    
     .produto {
-      height: 300px;
-      width: 250px;
+      height: 235px;
+      width: 185px;
       border-radius: 15px;
-      
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+    
     }
 
     .produto img {
-      max-width: 325px;
+      max-width: 145px;
       height: auto;
-      max-height: 255px;
-      padding-top: 20px;
+      max-height: 115px;
+      padding-top: 10px;
+      padding-left: 15px;
+      padding-right: 15px;
       
     }
-    .produto h2 {
-      font-size: 24px;
+    .nome-produto {
+      font-size: 12px;
       padding-top: 15px;
-      padding-left: 35px;
-      padding-right: 35px;
+      padding-left: 15px;
+      padding-right: 15px;
+      overflow-y: hidden;
+      height: 40px;
+
     }
 
     .produto p {
       color: rgb(46, 44, 44);
-      font-size: 18px;
-      padding-left: 35px;
-      padding-right: 25px;
+      font-size: 10px;
+      padding-left: 15px;
+      padding-right: 15px;
+      text-align: justify;
       max-width: 290px;
     }
 
   #preco {
-    font-size: 26px;
+    font-size: 16px;
     padding-top: 3px;
-    padding-left: 35px;
-    padding-bottom: 35px;
+    padding-left: 15px;
+    padding-bottom: 10px;
     font-weight: 500;
+    height: 20px;
   }
+
+  .container-produtos {
+    display: flex;
+    flex-direction: row;
+    overflow-wrap: break-word;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-left: 0.5%;
+    margin-right: 1%;
+    gap: 10px;
+  }
+
+  .container-imagem {
+    width: 100%;
+    height: 72%;
+    display: flex;
+    justify-content: center;
+  }
+
+  header h1 {
+    margin-left: 20px;
+    margin-top: 6px;
+
+  }
+
+  }
+
+  @media screen and (max-width: 650px){
+
+  header h1 {
+    margin-left: 25px;
+    margin-top: 6px;
+
+  }
+
   }
 
   @media screen and (max-width: 400px){
@@ -265,11 +347,6 @@ quando a tela for até
     margin-left: 15px;
   }
 
-  .menu a {
-    padding: 5px 5px 5px 2px;
-    text-decoration: none;
-    font-size: 16px;
-  }
 
 
   }
