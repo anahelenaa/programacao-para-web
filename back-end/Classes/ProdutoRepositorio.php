@@ -54,7 +54,8 @@ class ProdutoRepositorio {
             $dados['valor'],
             $dados['descricao'],
             $dados['imagem'],
-            $dados['quantidade']
+            $dados['quantidade'],
+            $dados['id']
         );
 
         return $produto;
@@ -70,6 +71,19 @@ class ProdutoRepositorio {
         $dados = $statement->fetch(PDO::FETCH_ASSOC);
 
         return $this->formaProduto($dados);
+
+    }
+
+    public function editaProduto (Produto $produto){
+        $sql = "UPDATE produtos SET nome = ?, valor = ?, descricao = ?, quantidade = ?, imagem = ? WHERE id = ?";
+        $statement = $this->pdo->prepare($sql);
+        $statement->bindValue(1, $produto->retornaNome());
+        $statement->bindValue(2, $produto->retornaValor());
+        $statement->bindValue(3, $produto->retornaDescricao());
+        $statement->bindValue(4, $produto->retornaQuantidade());
+        $statement->bindValue(5, $produto->retornaImagem());
+        $statement->bindValue(6, $produto->retornaId());
+        $statement->execute();
 
     }
 }

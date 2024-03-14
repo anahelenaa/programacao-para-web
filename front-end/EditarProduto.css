@@ -99,7 +99,7 @@ header h1 {
     padding-top: 20px;
     padding-bottom: 20px;
     padding-left: 25px;
-    margin-left: 37%;
+    margin-left: 34%;
 
 }
 
@@ -107,6 +107,11 @@ header h1 {
     display: flex;
     justify-content: center;
     width: 100%;
+    margin-top: 20px;
+  }
+
+  .formulario label{
+    margin-top: 15px;
   }
 
   .formulario {
@@ -115,12 +120,30 @@ header h1 {
     flex-direction: column;
   }
 
+  .container-imagem{
+    width: 90%;
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .container-imagem img {
+    max-width: 80%;
+    height: auto;
+  }
+
+  .container-imagem figcaption{
+    font-size: 16px;
+  }
+
   #nome, #valor, #descricao, #quantidade {
-    height: 30px;
+    height: 50px;
     width: 400px;
     border-radius: 5px;
     border: none;
     box-shadow: 3px 3px 5px rgb(165, 165, 165);
+    padding-left: 4px;
   }
 
   #nome:focus, #valor:focus, #descricao:focus, #quantidade:focus {
@@ -129,15 +152,20 @@ header h1 {
   }
 
   #imagem {
+    height: 40px;
     border: none;
     box-shadow: none;
     background-color: rgba(0, 0, 0, 0);
   }
 
-  .botao-cadastrar {
+  #label-imagem{
+    margin-top: 0px;
+  }
+
+  .botao-editar {
     margin-top: 30px;
     width: 160px;
-    height: 35px;
+    height: 50px;
     font-size: 16px;
     border-radius: 5px;
     border: none;
@@ -146,7 +174,7 @@ header h1 {
 
   }
 
-  .botao-cadastrar:hover{
+  .botao-editar:hover{
     background-color: #2d9521;
     transition: 0.2s;
   }
@@ -227,5 +255,4 @@ quando a tela for até
 
 
   }
-
 

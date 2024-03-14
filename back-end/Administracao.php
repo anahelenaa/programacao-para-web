@@ -27,48 +27,50 @@ $arrayProdutos = $produtoRepositorio->retornaProdutos();
         <div id="meuMenu" class="menu">
             <a href="javascript:void(0)" class="botao-fechar" onclick="closeNav()">&times;</a>
             <div class="container-opcoes">
-                <a class="opcao-menu" href="#brinquedos">Brinquedos</a>
-                <a class="opcao-menu" href="#presentes">Presentes</a>
+                <a class="opcao-menu" href="index.php">Catálogo</a>
+                <a class="opcao-menu" href="./Administracao.php">Painel de Administração</a>
+                <a class="opcao-menu" href="./CadastrarProduto.php">Cadastrar produto</a>
             </div>
         </div>
         <a href="javascript:void(0)" onclick="openNav()"><i class="fa fa-bars" id="btn"></i></a>
         
         <h1 id="titulo" >Du<b style="color:red">A</b><b style="color: blue">r</b><b style="color: yellow">t</b><b style="color: green">e</b></h1>
     </header>
-    <div class="container-tabela">
-        <table class="tabela-produtos">
-            <tr>
-                <th>id</th>
-                <th>Nome</th>
-                <th>Valor</th>
-                <th>Descrição</th>
-                <th>Estoque</th>
-                <th>Editar</th>
-                <th>Excluir</th>
+    <div id="corpo">
+        <h2 class="h2 ">Produtos</h2>
+        <div class="container-tabela">
+            <table class="tabela-produtos">
+                <tr>
+                    <th>Nome</th>
+                    <th>Valor</th>
+                    <th>Descrição</th>
+                    <th>Estoque</th>
+                    <th colspan="2">Ações</th>
 
-            </tr>
-            <?php foreach($arrayProdutos as $produto){?>
-            <tr>
-                <td><?="{$produto->retornaId()}";?></td>
-                <td><?="{$produto->retornaNome()}";?></td>
-                <td><?="{$produto->retornaValorFormatado()}";?></td>
-                <td><?="{$produto->retornaDescricao()}";?></td>
-                <td><?="{$produto->retornaQuantidade()}";?></td>
-                <td><a href="./EditarProduto.php?id=<?= $produto->retornaId();?>"><button>Editar</button></a></td>  
-                <td>
-                    <form action="ExcluirProduto.php" method="post">
-                        <input type="hidden" name="id" value="<?= $produto->retornaId();?>">
-                        <input type="submit" class="botao-excluir" value="Excluir" >
-                    </form>
-                </td>
-            </tr>
-            <?php };?>
+                </tr>
+                <?php foreach($arrayProdutos as $produto){?>
+                <tr>
+                    <td><?="{$produto->retornaNome()}";?></td>
+                    <td>R$<?="{$produto->retornaValorFormatado()}";?></td>
+                    <td><?="{$produto->retornaDescricao()}";?></td>
+                    <td><?="{$produto->retornaQuantidade()}";?></td>
+                    <td><a href="./EditarProduto.php?id=<?= $produto->retornaId();?>"><button class="botao">Editar</button></a></td>  
+                    <td>
+                        <form action="ExcluirProduto.php" method="post">
+                            <input type="hidden" name="id" value="<?= $produto->retornaId();?>">
+                            <input type="submit" class="botao" value="Excluir" >
+                        </form>
+                    </td>
+                </tr>
+                <?php };?>
 
-        </table>
+            </table>
+        </div>
+        <div class="container-botao-cadastrar">
+        <a href="./CadastrarProduto.php"><button class="botao-cadastrar">Cadastrar Produto</button></a>
+        </div>
     </div>
-
-    <a href="./CadastrarProduto.php"><button>Cadastrar Produto</button></a>
-
+    
     <script>
 
         var largura = screen.width;

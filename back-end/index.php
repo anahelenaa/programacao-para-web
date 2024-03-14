@@ -27,8 +27,9 @@ $arrayProdutos = $produtoRepositorio->retornaProdutos();
         <div id="meuMenu" class="menu">
             <a href="javascript:void(0)" class="botao-fechar" onclick="closeNav()">&times;</a>
             <div class="container-opcoes">
-                <a class="opcao-menu" href="#brinquedos">Brinquedos</a>
-                <a class="opcao-menu" href="#presentes">Presentes</a>
+                <a class="opcao-menu" href="index.php">Catálogo</a>
+                <a class="opcao-menu" href="./Administracao.php">Painel de Administração</a>
+                <a class="opcao-menu" href="./CadastrarProduto.php">Cadastrar produto</a>
             </div>
         </div>
         <a href="javascript:void(0)" onclick="openNav()"><i class="fa fa-bars" id="btn"></i></a>

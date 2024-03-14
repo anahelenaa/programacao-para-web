@@ -83,28 +83,33 @@ if(isset($_POST['cadastro'])){
         <div id="meuMenu" class="menu">
             <a href="javascript:void(0)" class="botao-fechar" onclick="closeNav()">&times;</a>
             <div class="container-opcoes">
-                <a class="opcao-menu" href="#brinquedos">Brinquedos</a>
-                <a class="opcao-menu" href="#presentes">Presentes</a>
+                <a class="opcao-menu" href="index.php">Catálogo</a>
+                <a class="opcao-menu" href="./Administracao.php">Painel de Administração</a>
+                <a class="opcao-menu" href="./CadastrarProduto.php">Cadastrar produto</a>
             </div>
         </div>
         <a href="javascript:void(0)" onclick="openNav()"><i class="fa fa-bars" id="btn"></i></a>
         
         <h1 id="titulo" >Du<b style="color:red">A</b><b style="color: blue">r</b><b style="color: yellow">t</b><b style="color: green">e</b></h1>
     </header>
-    <form enctype="multipart/form-data" onsubmit="exibeAlerta()" method="post">
-        <label for="nome">Nome</label>
-        <input type="text" name="nome" id="nome" placeholder="Digite o nome do produto" >
-        <label for="valor">Valor</label>
-        <input type="text" name="valor" id="valor" placeholder="Digite o valor do produto" >
-        <label for="descricao">Descrição</label>
-        <input type="text" name="descricao" id="descricao" placeholder="Digite a descrição do produto" >
-        <label for="imagem">Imagem</label>
-        <input type="file" accept="image/*" name="imagem" id="imagem" placeholder="Insira a imagem do produto" >
-        <label for="quantidade">Estoque</label>
-        <input type="number" name="quantidade" id="quantidade" placeholder="Digite o estoque" >
-        <input type="submit" name="cadastro" class="botao-cadastrar" value="Cadastrar Produto">
-    </form>
-
+    <div id="corpo">
+        <h2 class="h2">Cadastro de produtos</h2>
+        <div class="container-formulario">
+            <form enctype="multipart/form-data" onsubmit="exibeAlerta()" method="post" class="formulario">
+                <label for="nome">Nome</label>
+                <input type="text" name="nome" id="nome" placeholder="Digite o nome do produto" >
+                <label for="valor">Valor</label>
+                <input type="text" name="valor" id="valor" placeholder="Digite o valor do produto" >
+                <label for="descricao">Descrição</label>
+                <input type="text" name="descricao" id="descricao" placeholder="Digite a descrição do produto" >
+                <label for="imagem">Imagem</label>
+                <input type="file" accept="image/*" name="imagem" id="imagem" placeholder="Insira a imagem do produto" >
+                <label for="quantidade">Estoque</label>
+                <input type="number" name="quantidade" id="quantidade" placeholder="Digite o estoque" >
+                <input type="submit" name="cadastro" class="botao-cadastrar" value="Cadastrar Produto">
+            </form>
+        </div>
+    </div>
     <?php if(isset($erro)){?>
         <div class="erro">
             <p><?= $erro ?></p>

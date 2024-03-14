@@ -9,14 +9,15 @@ class Produto {
     private string $descricao;
     private int $quantidade;
     private string $imagem;
-    private int $id;
+    private ?int $id;
 
-    public function cadastraProduto( string $nomeProduto, float $valorProduto, string $descricaoProduto, string $imagemProduto, int $quantidadeProduto){
+    public function cadastraProduto( string $nomeProduto, float $valorProduto, string $descricaoProduto, string $imagemProduto, int $quantidadeProduto, ?int $idProduto = null){
         $this->nome = $nomeProduto;
         $this->valor = $valorProduto;
         $this->descricao = $descricaoProduto;
         $this->imagem = $imagemProduto;
         $this->quantidade = $quantidadeProduto;
+        $this->id = $idProduto;
 
     }
 
@@ -48,8 +49,5 @@ class Produto {
         return $this->quantidade;
     }
 
-    public function editaNome(string $nome, array $arrayProdutos, Produto $produto){
-        $arrayProdutos[($produto->retornaId()) - 1]->nome = $nome;
-    }
 
 }
