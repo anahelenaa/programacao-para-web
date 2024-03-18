@@ -14,55 +14,64 @@ if(isset($_POST['cadastro'])){
     $arquivoAlvo = $pastaAlvo . basename($_FILES["imagem"]["name"]);
     $uploadOk = 1;
     $tipoArquivoImagem = strtolower(pathinfo($arquivoAlvo,PATHINFO_EXTENSION));
-    
-    $produto = new Produto();
-    $produto->cadastraProduto(
-        $_POST['nome'], 
-        $_POST['valor'], 
-        $_POST['descricao'], 
-        $_FILES["imagem"]["name"], 
-        $_POST['quantidade'],
-    );
-
-    $produtoRepositorio = new ProdutoRepositorio($pdo);
-    $status = $produtoRepositorio->cadastraProdutosBanco($produto);
 
     $erro = null;
     
-    $checa = getimagesize($_FILES["imagem"]["tmp_name"]);
-    if($checa !== false) {
-        $uploadOk = 1;
-    } else {
-        $erro .= "Arquivo não é uma imagem.";
-        $uploadOk = 0;
-    }
+    $produto = new Produto();
+    try { $produto->cadastraProduto(
+            $_POST['nome'], 
+            $_POST['valor'], 
+            $_POST['descricao'], 
+            $_FILES["imagem"]["name"], 
+            $_POST['quantidade'],
+        );
 
-    if (file_exists($arquivoAlvo)) {
-        $erro .= "Desculpe, arquivo já existe.";
-        $uploadOk = 0;
-    }
-    
-    if ($_FILES["imagem"]["size"] > 500000) {
-        $erro .= "Desculpe, seu arquivo é muito grande.";
-        $uploadOk = 0;
-    }
-    
-    if($tipoArquivoImagem != "jpg" && $tipoArquivoImagem != "png" && $tipoArquivoImagem != "jpeg"
-    && $tipoArquivoImagem != "gif" ) {
-      $erro .= "Desculpe, apenas arquivos do tipoJPG, JPEG, PNG & GIF são permitidos.";
-      $uploadOk = 0;
-    }
-    
-    if ($uploadOk == 0) {
-        $erro .= "Desculpe, upload não foi concluido.";
+        $produtoRepositorio = new ProdutoRepositorio($pdo);
+        $status = $produtoRepositorio->cadastraProdutosBanco($produto);
 
-    } else {
-        if (move_uploaded_file($_FILES["imagem"]["tmp_name"], $arquivoAlvo)) {
-          
+        $checa = getimagesize($_FILES["imagem"]["tmp_name"]);
+        if($checa !== false) {
+            $uploadOk = 1;
         } else {
-          $erro .= "Desculpe, houve um erro na hora de carregar seu arquivo.";
+            $erro .= "Arquivo não é uma imagem.";
+            $uploadOk = 0;
         }
+
+        if (file_exists($arquivoAlvo)) {
+            $erro .= "Desculpe, arquivo já existe.";
+            $uploadOk = 0;
+        }
+        
+        if ($_FILES["imagem"]["size"] > 500000) {
+            $erro .= "Desculpe, seu arquivo é muito grande.";
+            $uploadOk = 0;
+        }
+        
+        if($tipoArquivoImagem != "jpg" && $tipoArquivoImagem != "png" && $tipoArquivoImagem != "jpeg"
+        && $tipoArquivoImagem != "gif" ) {
+        $erro .= "Desculpe, apenas arquivos do tipoJPG, JPEG, PNG & GIF são permitidos.";
+        $uploadOk = 0;
+        }
+        
+        if ($uploadOk == 0) {
+            $erro .= "Desculpe, upload não foi concluido.";
+
+        } else {
+            if (move_uploaded_file($_FILES["imagem"]["tmp_name"], $arquivoAlvo)) {
+            
+            } else {
+            $erro .= "Desculpe, houve um erro na hora de carregar seu arquivo.";
+            }
+        }
+    } catch(Exception $execao){
+        
+        $erro .= $execao->getMessage();
     }
+
+    // $produtoRepositorio = new ProdutoRepositorio($pdo);
+    // $status = $produtoRepositorio->cadastraProdutosBanco($produto);
+    
+    
 
 }
 
@@ -95,7 +104,7 @@ if(isset($_POST['cadastro'])){
     <div id="corpo">
         <h2 class="h2">Cadastro de produtos</h2>
         <div class="container-formulario">
-            <form enctype="multipart/form-data" onsubmit="exibeAlerta()" method="post" class="formulario">
+            <form enctype="multipart/form-data" method="post" class="formulario" <?php if(isset($status)){ $mensagem = $produtoRepositorio->retornaResultado($status);?>onsubmit="alert('<?=$mensagem?>');" <?php } ?>>
                 <label for="nome">Nome</label>
                 <input type="text" name="nome" id="nome" placeholder="Digite o nome do produto" >
                 <label for="valor">Valor</label>
@@ -110,14 +119,17 @@ if(isset($_POST['cadastro'])){
             </form>
         </div>
     </div>
-    <?php if(isset($erro)){?>
-        <div class="erro">
-            <p><?= $erro ?></p>
-        </div>
-    <?php }?>
+    <div class="container-erro">
+        <?php if(isset($erro)){?>
+            <div class="erro">
+                <p><?= $erro ?></p>
+            </div>
+        <?php }?>
+    </div>
     
 
     <script>
+
 
 var largura = screen.width;
 
@@ -169,6 +181,7 @@ function closeNav() {
         }
     }
 }
+
 </script>
     
 </body>

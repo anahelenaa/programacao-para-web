@@ -2,6 +2,8 @@
 
 namespace App\Classes;
 
+use Exception;
+
 class Produto {
 
     private string $nome;
@@ -16,9 +18,18 @@ class Produto {
         $this->valor = $valorProduto;
         $this->descricao = $descricaoProduto;
         $this->imagem = $imagemProduto;
-        $this->quantidade = $quantidadeProduto;
+        $this->quantidade = $this->validaQuantidade($quantidadeProduto);
         $this->id = $idProduto;
 
+    }
+
+    public function validaQuantidade($quantidadeProduto){
+        if(is_int($quantidadeProduto) && $quantidadeProduto >= 0){
+            return $quantidadeProduto;
+        }
+        
+        throw new Exception("O estoque não pode ser menor que 0.");
+        
     }
 
     public function retornaNome(){

@@ -2,8 +2,6 @@
 
 namespace App\Classes;
 
-error_reporting(E_ALL);
-
 use App\Classes\Produto;
 use PDO;
 
@@ -36,7 +34,8 @@ class ProdutoRepositorio {
     }
 
     public function retornaResultado($status):string{
-        return ($status == true) ? $resultado = "Produto cadastrado com sucesso.":$resultado = "Produto não cadastrado.";;
+        ($status == true) ? $resultado = "Produto cadastrado com sucesso.":$resultado = "Produto não cadastrado.";
+        return $resultado;
     }
 
     public function deletaProduto(int $id){

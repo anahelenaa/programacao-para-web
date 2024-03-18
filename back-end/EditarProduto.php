@@ -82,12 +82,6 @@
 
         $produtoRepositorio->editaProduto($produto);
     }
-
-    // else {
-    //     $produto = $produtoRepositorio->retornaProduto($_GET['id']);
-    
-    // }
-
 ?>
 
 <!DOCTYPE html>
